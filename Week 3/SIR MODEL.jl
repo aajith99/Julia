@@ -15,7 +15,7 @@ function sir_model!(du, u, p, t)
     du[1] = dS
     du[2] = dI
     du[3] = dR
-end 
+end
 
 # Parameters
 c = 10 # Estimated average number of contacts per day of each person
