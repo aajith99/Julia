@@ -8,7 +8,7 @@ function sir_model(du, u, p, t)
     N = S + I + R
 
     # Differential equations
-    dS = -c * β * S * I / N
+    dS = -c * β * S * I / N 
     dI = c * β * S * I / N - ɣ * I
     dR = ɣ * I
 
@@ -43,3 +43,18 @@ sol = solve(prob)
 # Plot the solution
 plot(sol, label=["Susceptible" "Infected" "Recovered"], xlabel="Time", ylabel="Population")
 
+
+
+# Function to calculate herd immunity threshold
+#function herd_immunity_threshold(Ro)
+    #return 1 - 1/Ro
+#end
+
+#Ro_values = 0.1:0.1:30  # Avoid Ro = 0 to prevent division by zero
+
+#pc_values = herd_immunity_threshold.(Ro_values)
+
+# Plot the result
+#plot(Ro_values, pc_values, label="Herd Immunity Threshold", xlabel="R₀", 
+#ylabel="pc (Herd Immunity Threshold)", lw=2, legend=:topright, 
+#title="Herd Immunity Threshold vs R₀")
