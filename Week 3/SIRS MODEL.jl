@@ -24,14 +24,14 @@ p = [c, β, ɣ, ps, ɣs, α]
 
 # Initial conditions
 S0 = 4999
-I0 = 1
+I0 = 10
 Is0 = 0
 R0 = 0
 
 u0 = [S0, I0, Is0, R0] 
 
 # Time span
-tspan = (0.0,180.0)
+tspan = (0.0, 180.0) # 6 months 
 
 # Define the problem
 prob = ODEProblem(sir_model!, u0, tspan, p)
