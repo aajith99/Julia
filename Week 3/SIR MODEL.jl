@@ -20,7 +20,7 @@ end
 # Parameters
 c = 10 # Estimated average number of contacts per day of each person
 β = 0.035 # Transmission probability
-ɣ = 0.1 
+ɣ = 0.1 # Recovery Rate
 
 p = [c, β, ɣ]
 
