@@ -24,7 +24,7 @@ p = [c, β, ɣ, ps, ɣs, α]
 
 # Initial conditions
 S0 = 4999
-I0 = 10
+I0 = 1
 Is0 = 0
 R0 = 0
 
