@@ -14,7 +14,7 @@ end
 
 # Parameters
 c = 8 # # Estimated average number of contacts per day of each person
-β = 0.035 # # Transmission probability
+β = 0.035 # # Transmission probability 0.035
 ɣ = 0.143 # 7 days to recover from average infections
 ps = 0.2 # Range from 15%-25% end up being seriously ill --> I chose 20%
 ɣs = 0.071 # Average 2 weeks to recover from serious illness
