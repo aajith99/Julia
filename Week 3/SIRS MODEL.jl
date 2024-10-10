@@ -43,11 +43,14 @@ sol = solve(prob)
 # plot(sol, label=["Susceptible" "Infected" "Severe Infected" "Recovered"], 
 # xlabel="Time", ylabel="Population")
 
-plot(sol.t,sol[2,:], xlimits=(0,30), label=["Susceptible" "Infected" "Severe Infected" "Recovered"], xlabel="Time", ylabel="Population")
+plot(sol.t,hcat(sol[2,:], sol[3,:]), xlimits=(0,30), 
+label=["Infected" "Severe Infected" "Recovered"], xlabel="Time", ylabel="Population")
 
-data = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,7,20,3,29,14,11,12,16,10,58]
-scatter!(data, xlabel="Time", ylabel="Population", label=["No. of Infected"])
+data1 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,7,20,3,29,14,11,12,16,10,58]
+scatter!(data1, xlabel="Time", ylabel="Population", label=["No. of Infected"])
 
+data2 = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,5]
+scatter!(data2, xlabel="Time", ylabel="Population", label=["No. of Severe Infected"])
 #p1 = plot(sol.t,sol[2,:], xlimits=(0,23), ylimits=(0,150), 
 #label=["Susceptible" "Infected" "Recovered"], xlabel="Time", ylabel="Population")
 
