@@ -13,17 +13,17 @@ function sir_model!(du, u, p, t)
 end 
 
 # Parameters
-c = 10 
-β = 0.035
-ɣ = 0.1 # 10 days on average infections
-ps = 0.2 # 20% end up being seriously ill
+c = 8 # # Estimated average number of contacts per day of each person
+β = 0.035 # # Transmission probability
+ɣ = 0.143 # 7 days to recover from average infections
+ps = 0.2 # Range from 15%-25% end up being seriously ill --> I chose 20%
 ɣs = 0.071 # Average 2 weeks to recover from serious illness
-α = 0.011 # 90 days or approximately 3 months to recover
+α = 0.033 # Approximately 1 month to recover
 
 p = [c, β, ɣ, ps, ɣs, α]
 
-# Initial conditions
-S0 = 4999
+# Initial conditions - 6000 total population
+S0 = 5999 
 I0 = 1
 Is0 = 0
 R0 = 0
@@ -31,7 +31,7 @@ R0 = 0
 u0 = [S0, I0, Is0, R0] 
 
 # Time span
-tspan = (0.0, 180.0) # 6 months 
+tspan = (0.0, 25.0) # 25 days 
 
 # Define the problem
 prob = ODEProblem(sir_model!, u0, tspan, p)
@@ -40,15 +40,22 @@ prob = ODEProblem(sir_model!, u0, tspan, p)
 sol = solve(prob)
 
 # Plot the solution
-p1 = plot(sol, label=["Susceptible" "Infected" "Severe Infected" "Recovered"], 
-xlabel="Time", ylabel="Population")
+# plot(sol, label=["Susceptible" "Infected" "Severe Infected" "Recovered"], 
+# xlabel="Time", ylabel="Population")
 
+plot(sol.t,sol[2,:], xlimits=(0,30), label=["Susceptible" "Infected" "Severe Infected" "Recovered"], xlabel="Time", ylabel="Population")
+
+data = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,11,7,20,3,29,14,11,12,16,10,58]
+scatter!(data, xlabel="Time", ylabel="Population", label=["No. of Infected"])
 
 #p1 = plot(sol.t,sol[2,:], xlimits=(0,23), ylimits=(0,150), 
 #label=["Susceptible" "Infected" "Recovered"], xlabel="Time", ylabel="Population")
 
 # Data for the first 21 days for the number infected
-#data = [1.0, 0.0, 5.0, 12.0, 0.0, 12.0, 0.0, 12.0, 11.0, 13.0, 0.0, 17.0, 41.0, 27.0, 20.0, 
-#41.0, 47.0, 61.0, 76.0, 113.0, 158.0]
 #scatter!(data, xlabel="Time", ylabel="Population", label=["Infected"])
 
+# Function to calculate reproduction number
+#Ro_value = c * β / ɣ   
+
+# Plot the result
+#println(Ro_value)
